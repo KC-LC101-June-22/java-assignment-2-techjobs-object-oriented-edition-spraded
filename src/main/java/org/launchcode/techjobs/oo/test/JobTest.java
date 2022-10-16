@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
+import java.lang.reflect.Field;
+
 import static org.junit.Assert.*;
 
 /**
@@ -37,6 +39,24 @@ public class JobTest {
         Job test_job_a = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job test_job_b = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertFalse(test_job_a.equals(test_job_b));
+    }
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        char firstChar = test_job.toString().charAt(0);
+        char lastChar = test_job.toString().charAt(test_job.toString().length()-1);
+        assertEquals(firstChar, '\n');
+        assertEquals(lastChar, '\n');
+    }
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("\n" + "ID: " + test_job.getId() + "\n" + "Name: " + test_job.getName() + "\n" + "Employer: " + test_job.getEmployer() + "\n" + "Location: " + test_job.getLocation() + "\n" + "Position Type: " + test_job.getPositionType() + "\n" + "Core Competency: " + test_job.getCoreCompetency() + "\n", test_job.toString());
+    }
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job test_job = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("\n" + "ID: " + test_job.getId() + "\n" + "Name: " + test_job.getName() + "\n" + "Employer: " + "Data not available" + "\n" + "Location: " + test_job.getLocation() + "\n" + "Position Type: " + test_job.getPositionType() + "\n" + "Core Competency: " + test_job.getCoreCompetency() + "\n", test_job.toString());
     }
 
 }

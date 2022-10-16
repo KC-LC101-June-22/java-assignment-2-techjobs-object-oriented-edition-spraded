@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.oo;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -91,5 +93,32 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString(){
+        String emptyMessage = "Data not available";
+        ArrayList<Object> jobData = new ArrayList<>();
+//        Field[] fields = this.getClass().getDeclaredFields();
+//        for (Field field : fields){
+//            if(field == null) {
+//                field.toString().replace(null, "Data not available");
+//            }
+//        }
+        if (this.getName() == null){
+            this.setName(emptyMessage);
+        }
+        if (this.getEmployer() == null){
+            String employer = emptyMessage;
+        } else {
+            employer = this.getEmployer();
+        }
+        String jobString = ("\n" + "ID: " + this.getId() +
+                "\n" + "Name: " + this.getName() +
+                "\n" + "Employer: " + this.getEmployer() +
+                "\n" + "Location: " + this.getLocation() +
+                "\n" + "Position Type: " + this.getPositionType() +
+                "\n" + "Core Competency: " + this.getCoreCompetency() + "\n");
+        return jobString;
     }
 }
