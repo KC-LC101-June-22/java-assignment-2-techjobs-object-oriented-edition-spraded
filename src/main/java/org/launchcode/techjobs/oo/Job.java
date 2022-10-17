@@ -97,6 +97,12 @@ public class Job {
 
     @Override
     public String toString(){
+        String name;
+        String employer;
+        String location;
+        String positionType;
+        String coreCompetency;
+
         String emptyMessage = "Data not available";
         ArrayList<Object> jobData = new ArrayList<>();
 //        Field[] fields = this.getClass().getDeclaredFields();
@@ -105,20 +111,38 @@ public class Job {
 //                field.toString().replace(null, "Data not available");
 //            }
 //        }
-        if (this.getName() == null){
-            this.setName(emptyMessage);
+        if (this.getName().isEmpty()){
+            name = emptyMessage;
         }
-        if (this.getEmployer() == null){
-            String employer = emptyMessage;
+        else {
+            name = this.getName();
+        }
+        if (this.getEmployer().getValue().isEmpty()){
+            employer = emptyMessage;
         } else {
-            employer = this.getEmployer();
+            employer = this.getEmployer().getValue();
+        }
+        if (this.getLocation().getValue().isEmpty()){
+            location = emptyMessage;
+        } else {
+            location = this.getLocation().getValue();
+        }
+        if (this.getPositionType().getValue().isEmpty()){
+            positionType = emptyMessage;
+        } else {
+            positionType = this.getPositionType().getValue();
+        }
+        if (this.getCoreCompetency().getValue().isEmpty()){
+            coreCompetency = emptyMessage;
+        } else {
+            coreCompetency = this.getCoreCompetency().getValue();
         }
         String jobString = ("\n" + "ID: " + this.getId() +
-                "\n" + "Name: " + this.getName() +
-                "\n" + "Employer: " + this.getEmployer() +
-                "\n" + "Location: " + this.getLocation() +
-                "\n" + "Position Type: " + this.getPositionType() +
-                "\n" + "Core Competency: " + this.getCoreCompetency() + "\n");
+                "\n" + "Name: " + name +
+                "\n" + "Employer: " + employer +
+                "\n" + "Location: " + location +
+                "\n" + "Position Type: " + positionType +
+                "\n" + "Core Competency: " + coreCompetency + "\n");
         return jobString;
     }
 }
