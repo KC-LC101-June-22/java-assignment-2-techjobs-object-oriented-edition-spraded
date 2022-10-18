@@ -1,7 +1,6 @@
 package org.launchcode.techjobs.oo;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+
 import java.util.Objects;
 
 public class Job {
@@ -104,13 +103,7 @@ public class Job {
         String coreCompetency;
 
         String emptyMessage = "Data not available";
-        ArrayList<Object> jobData = new ArrayList<>();
-//        Field[] fields = this.getClass().getDeclaredFields();
-//        for (Field field : fields){
-//            if(field == null) {
-//                field.toString().replace(null, "Data not available");
-//            }
-//        }
+
         if (this.getName().isEmpty()){
             name = emptyMessage;
         }

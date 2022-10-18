@@ -5,8 +5,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
-import java.lang.reflect.Field;
-
 import static org.junit.Assert.*;
 
 /**
